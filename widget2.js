@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     var button = document.createElement('button');
-    button.textContent = 'Connect MetaMask';
+    button.textContent = 'Connect MetaMa2sk';
 
     button.style.padding = '10px 20px';
     button.style.fontSize = '16px';

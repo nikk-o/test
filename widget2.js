@@ -1,31 +1,16 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const container = document.getElementById('metamask-widget-container');
-    if (!container) {
-        console.error('MetaMask widget container not found');
-        return;
-    }
-
-    const connectButton = document.createElement('button');
-    connectButton.innerText = 'Connect to MetaMask';
-    connectButton.onclick = function() {
-        if (typeof window.ethereum !== 'undefined') {
-            window.ethereum.request({ method: 'eth_requestAccounts' })
-            .then(accounts => {
-                if (accounts.length > 0) {
-                    const userAccount = accounts[0];
-                    alert('Connected: ' + userAccount);
-                } else {
-                    alert('MetaMask not found. Please check your installation.');
-                }
-            })
-            .catch(error => {
-                console.error('An error occurred while connecting to MetaMask:', error);
-                alert('Error connecting to MetaMask. See console for details.');
-            });
-        } else {
-            alert('MetaMask is not installed. Please install it to connect.');
-        }
-    };
-
-    container.appendChild(connectButton);
+    // Create a new button element
+    var button = document.createElement('button');
+    button.textContent = 'Simple Button';
+    
+    // Optionally, style the button
+    button.style.padding = '10px 20px';
+    button.style.fontSize = '16px';
+    button.style.cursor = 'pointer';
+    button.style.marginTop = '10px';
+    button.style.border = '1px solid #ccc';
+    button.style.backgroundColor = '#f0f0f0';
+    
+    // Append the button to the body of the document
+    document.body.appendChild(button);
 });

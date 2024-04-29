@@ -1,4 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const container = document.getElementById('metamask-widget-container');
+    if (!container) {
+        console.error('MetaMask widget container not found');
+        return;
+    }
+
     const connectButton = document.createElement('button');
     connectButton.innerText = 'Connect to MetaMask';
     connectButton.onclick = function() {
@@ -9,16 +15,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     const userAccount = accounts[0];
                     alert('Connected: ' + userAccount);
                 } else {
-                    alert('Please install MetaMask!');
+                    alert('MetaMask not found. Please check your installation.');
                 }
             })
             .catch(error => {
-                console.error('An error occurred: ', error);
+                console.error('An error occurred while connecting to MetaMask:', error);
+                alert('Error connecting to MetaMask. See console for details.');
             });
         } else {
             alert('MetaMask is not installed. Please install it to connect.');
         }
     };
 
-    document.body.appendChild(connectButton);
+    container.appendChild(connectButton);
 });

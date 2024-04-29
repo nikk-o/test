@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Create a new button element
+    var count = 0; // Initialize counter
+
     var button = document.createElement('button');
     button.textContent = 'Click Me';
-    
-    // Styling the button
+
     button.style.padding = '10px 20px';
     button.style.fontSize = '16px';
     button.style.cursor = 'pointer';
@@ -11,11 +11,11 @@ document.addEventListener('DOMContentLoaded', function() {
     button.style.border = '1px solid #ccc';
     button.style.backgroundColor = '#f0f0f0';
 
-    // Adding an event listener for click
     button.addEventListener('click', function() {
-        alert('Button was clicked!');
+        count += 1; // Increment counter
+        console.log('Button was clicked ' + count + ' times');
+        button.textContent = 'Click Me (' + count + ')'; // Update button text
     });
 
-    // Append the button to the body of the document
     document.body.appendChild(button);
 });

@@ -1,1 +1,29 @@
-<script src="https://nikk-o.github.io/test/widget2.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect to MetaMask</title>
+    <script src="https://cdn.jsdelivr.net/npm/ethers/dist/ethers.min.js"></script>
+</head>
+<body>
+    <button id="connectButton">Connect to MetaMask</button>
+    <script>
+        document.getElementById('connectButton').addEventListener('click', async () => {
+            if (window.ethereum) {
+                const provider = new ethers.providers.Web3Provider(window.ethereum);
+                try {
+                    await provider.send("eth_requestAccounts", []);
+                    const signer = provider.getSigner();
+                    const address = await signer.getAddress();
+                    window.location.href = 'https://www.mastermedia.net/miniorange?status=success&address=' + address;  // Redirect back to your Wix site with the user's address
+                } catch (error) {
+                    window.location.href = 'https://www.mastermedia.net/miniorange?status=error&message=' + encodeURIComponent(error.message);  // Redirect with error message
+                }
+            } else {
+                window.location.href = 'https://www.mastermedia.net/miniorange?status=error&message=MetaMask%20is%20not%20installed';  // Redirect if MetaMask is not installed
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,8 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var count = 0; // Initialize counter
-
     var button = document.createElement('button');
-    button.textContent = 'Click Me';
+    button.textContent = 'Connect MetaMask';
 
     button.style.padding = '10px 20px';
     button.style.fontSize = '16px';
@@ -11,11 +9,15 @@ document.addEventListener('DOMContentLoaded', function() {
     button.style.border = '1px solid #ccc';
     button.style.backgroundColor = '#f0f0f0';
 
-    button.addEventListener('click', function() {
-        count += 1; // Increment counter
-        console.log('Button was clicked ' + count + ' times');
-        button.textContent = 'Click Me (' + count + ')'; // Update button text
-    });
-
     document.body.appendChild(button);
+
+    button.addEventListener('click', function() {
+        if (typeof window.ethereum !== 'undefined') {
+            console.log('MetaMask is available!');
+            alert('MetaMask is available!');
+        } else {
+            console.log('MetaMask is not available!');
+            alert('MetaMask is not available. Please install it.');
+        }
+    });
 });

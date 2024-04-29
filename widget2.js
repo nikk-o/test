@@ -14,7 +14,21 @@ document.addEventListener('DOMContentLoaded', function() {
     button.addEventListener('click', function() {
         if (typeof window.ethereum !== 'undefined') {
             console.log('MetaMask is available!');
-            alert('MetaMask is available!');
+            // Attempt to connect to MetaMask
+            window.ethereum.request({ method: 'eth_requestAccounts' })
+                .then(function(accounts) {
+                    if (accounts.length > 0) {
+                        console.log('Connected to account: ', accounts[0]);
+                        alert('Connected to account: ' + accounts[0]);
+                    } else {
+                        console.log('No accounts found.');
+                        alert('No accounts found. Please create an account in MetaMask.');
+                    }
+                })
+                .catch(function(error) {
+                    console.error('Failed to connect MetaMask:', error);
+                    alert('Failed to connect to MetaMask. Please try again.');
+                });
         } else {
             console.log('MetaMask is not available!');
             alert('MetaMask is not available. Please install it.');

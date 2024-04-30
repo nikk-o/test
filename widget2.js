@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('load', function() {
     var button = document.createElement('button');
     button.textContent = 'Connect MetaMa2sk';
 
